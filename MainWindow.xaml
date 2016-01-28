@@ -1,0 +1,76 @@
+﻿<Window x:Class="HitboxDashboard_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:hitboxDashboardWpf="clr-namespace:HitboxDashboard_WPF"
+        Title="Dashboard" Height="600" Width="650" WindowStartupLocation="CenterScreen" Icon="hitbox-icon-green.png">
+    
+    <Grid>
+        
+        <TabControl HorizontalAlignment="Left" Height="569" VerticalAlignment="Top" Width="642">
+            <TabItem x:Name="loginTab" Header="Login" Background="{x:Null}">
+                <Grid>
+                    <Image Height="172" Margin="228,4,221,0" VerticalAlignment="Top" Source="hitbox-icon-green.png"/>
+                    <TextBox x:Name="usernameTextBox" Text="{Binding Path=Username, Mode=TwoWay ,ValidatesOnExceptions=True}" HorizontalAlignment="Left" Height="20" Margin="255,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" KeyUp="usernameTextBox_KeyUp"/>
+                    <Label Content="Password" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="292,306,0,0"/>
+                    <Label Content="Username" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="290,209,0,0"/>
+                    <PasswordBox x:Name="passwordTextBox" HorizontalAlignment="Left" Margin="255,332,0,0" VerticalAlignment="Top" Width="136" Height="20" KeyUp="passwordTextBox_KeyUp"/>
+                    <CheckBox x:Name="editorCheck" Content="Editor" HorizontalAlignment="Left" Margin="294,425,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="hitboxSubmitLogin" Content="Login" HorizontalAlignment="Left" Margin="238,465,0,0" VerticalAlignment="Top" Width="166" Height="45" Background="#FFDDDDDD" Click="hitboxSubmitLogin_Click" IsEnabled="False">
+                        
+                    </Button>
+                    <ComboBox x:Name="editorDropDown" HorizontalAlignment="Left" Margin="264,398,0,0" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="dashboardTab" Header="Dashboard">
+                <Grid>
+                    <GroupBox Header="Game" HorizontalAlignment="Left" Margin="10,75,0,417" Width="284">
+                        <ComboBox x:Name="gameComboBox" HorizontalAlignment="Left" Margin="5,2,0,0" VerticalAlignment="Top" Width="264" IsEditable="True" KeyUp="gameComboBox_KeyUp" SelectionChanged="gameComboBox_SelectionChangeCommitted"/>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox1" Header="Stream Title" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="60" Width="284">
+                        <TextBox x:Name="streamTitle" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="268" Margin="3,0,0,0" FontFamily="Microsoft Sans Serif" KeyUp="streamTitle_KeyDown"/>
+                    </GroupBox>
+                    <GroupBox x:Name="visibleBox" Header="Channel Visibility" HorizontalAlignment="Left" Margin="10,129,0,352" Width="284" Height="60">
+                        <Grid x:Name="visibleGrid">
+                            <RadioButton x:Name="visibleButton" Content="Visible" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" GroupName="visibleButtons" Click="visibleButton_Click"/>
+                            <RadioButton x:Name="hiddenButton" Content="Hidden" HorizontalAlignment="Left" Margin="152,10,0,0" VerticalAlignment="Top" GroupName="visibleButtons" Click="hiddenButton_Click"/>
+                        </Grid>
+                    </GroupBox>
+                    <Button x:Name="adPlusButton" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Margin="190,194,0,0" Height="23" Click="adPlusButton_Click"/>
+                    <Button x:Name="adButton" Content="Run 0 Ads" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="110,194,0,0" Height="23" Click="adButton_Click"/>
+                    <Button x:Name="adMinusButton" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Margin="85,194,0,0" Height="23" Click="adMinusButton_Click"/>
+                    <TabControl x:Name="tabControl" Height="309" Margin="10,222,0,0" Width="284" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <TabItem Header="All">
+                            <ListView x:Name="allUsersList" MouseRightButtonUp="allUsersList_MouseRightClick">
+
+                            </ListView>
+                        </TabItem>
+                        <TabItem Header="Moderators">
+                            <ListView x:Name="modUsersList" MouseRightButtonUp="allUsersList_MouseRightClick">
+                            </ListView>
+                        </TabItem>
+                        <TabItem Header="Viewers">
+                            <ListView x:Name="viewerUsersList" MouseRightButtonUp="allUsersList_MouseRightClick">
+                            </ListView>
+                        </TabItem>
+                        <TabItem Header="Banned">
+                            <ListView x:Name="banUsersList" MouseRightButtonUp="allUsersList_MouseRightClick">
+                            </ListView>
+                        </TabItem>
+                    </TabControl>
+
+                    <TextBox x:Name="chatBox" HorizontalAlignment="Left" Height="52" Margin="299,479,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="327" KeyUp="chatBox_KeyDown"/>
+                    <Border BorderBrush="#FFABADB3" BorderThickness="1" HorizontalAlignment="Left" Height="464" Margin="299,10,0,0" VerticalAlignment="Top" Width="327" Background="White">
+                        <TextBlock x:Name="chatTextBox" TextWrapping="Wrap" FontSize="14"/>
+                    </Border>
+                    <Button x:Name="AddlButton"  Content="Button" HorizontalAlignment="Left" Margin="220,220,0,0" VerticalAlignment="Top" Width="75" Click="AddlButton_Click" >
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Label Content="Add'l Tools" FontSize="12" Margin="0,0,7,0" FontFamily="Segoe UI" FontWeight="Normal"></Label>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

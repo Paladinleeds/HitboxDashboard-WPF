@@ -1,0 +1,24 @@
+﻿<Window x:Class="HitboxDashboard_WPF.AddlDashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AddlDashboard" Height="512" Width="360">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Expander Header="Sticky Message" HorizontalAlignment="Left" Margin="0,23,0,0" VerticalAlignment="Top" Width="352">
+            <Grid Margin="2,0,-2,0" Height="100">
+                <TextBox HorizontalAlignment="Left" Margin="10,10,0,10" TextWrapping="Wrap" Width="234"/>
+                <Button Content="Post" HorizontalAlignment="Left" Margin="265,26,0,26" Width="75"/>
+            </Grid>
+        </Expander>
+        <Expander Grid.Row="2" Header="Poll" HorizontalAlignment="Left" Margin="0,1,0,0" VerticalAlignment="Top">
+            <Grid Background="#FFE5E5E5" Height="100">
+                
+            </Grid>
+        </Expander>
+
+    </Grid>
+</Window>
