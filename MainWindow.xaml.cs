@@ -29,7 +29,7 @@ namespace HitboxDashboard_WPF
             {
                 if (String.IsNullOrEmpty(value))
                 {
-                    throw new Exception("Username Cannot Be Empty.");
+                    //throw new Exception("Username Cannot Be Empty.");
                 }
                 _username = value;
             }

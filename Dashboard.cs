@@ -32,9 +32,13 @@ namespace HitboxDashboard_WPF
             var o = API.Post(API.BaseApi + "/auth/login", json);
 
 
-            if (o.Equals("auth_failed"))
+            if (o.ToString().Contains("error_msg"))
             {
-                //errorProvider.SetError(passwordTextBox, "Password Incorrect.");
+                MessageBoxResult result = MessageBox.Show(this, "Unable to authenticate, please try again!", "Login error");
+                usernameTextBox.Text = String.Empty;
+                passwordTextBox.Password = String.Empty;
+                Keyboard.Focus(usernameTextBox);
+                hitboxSubmitLogin.IsEnabled = false;
                 return false;
             }
             AuthToken = JObject.Parse(o.ToString()).GetValue("authToken").ToString();
